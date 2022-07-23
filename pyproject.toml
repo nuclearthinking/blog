@@ -6,11 +6,10 @@ authors = ["Vladislav Radchenko <vradchenko@callpanda.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-fastapi = "^0.79.0"
-uvicorn = "^0.18.2"
+fastapi = {extras = ["all"], version = "^0.79.0"}
 SQLAlchemy = {extras = ["asyncio"], version = "^1.4.39"}
-pydantic = "^1.9.1"
 passlib = "^1.7.4"
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
 
 [tool.poetry.dev-dependencies]
 sqlalchemy-stubs = "^0.4"

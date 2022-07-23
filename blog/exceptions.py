@@ -8,3 +8,7 @@ class UserAlreadyExists(BaseBlogException):
 
 class UserNotFound(BaseBlogException):
     ...
+
+
+class NotAuthorizedException(BaseBlogException):
+    ...

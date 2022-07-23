@@ -5,7 +5,7 @@ from blog.exceptions import UserAlreadyExists, UserNotFound
 from blog.models.user import User
 
 
-async def create_user(email: str, password: str) -> User:
+async def create_user(email: str, password: str) -> None:
     query = sa.select(User).where(User.email == email)
     result = await db_session.execute(query)
     user = result.scalar_one_or_none()
@@ -17,8 +17,6 @@ async def create_user(email: str, password: str) -> User:
     user.password = password
     db_session.add(user)
     await db_session.commit()
-    await db_session.refresh(user)
-    return user
 
 
 async def get_user(email: str) -> User:
