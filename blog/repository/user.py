@@ -22,7 +22,7 @@ async def create_user(email: str, password: str) -> None:
 async def get_user(email: str) -> User:
     query = sa.select(User).where(User.email == email)
     result = await db_session.execute(query)
-    user = result.scalar_one_or_none()
-    if not user:
+    if user := result.scalar_one_or_none():
+        return user
+    else:
         raise UserNotFound(f"User with email {email} not found")
-    return user
